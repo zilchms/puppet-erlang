@@ -10,7 +10,7 @@ describe 'erlang init:' do
 
     it_behaves_like 'an idempotent resource'
 
-    describe package(package_name) do
+    describe package('erlang') do
       it { is_expected.to be_installed }
     end
   end

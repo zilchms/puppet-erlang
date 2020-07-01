@@ -1,6 +1,5 @@
 # @summary Manages the Erlang repository and package installation
 class erlang (
-  Boolean $manage_package = true,
   String  $package_name   = 'erlang',
   String  $package_ensure = 'installed',
   Boolean $manage_repo    = true,

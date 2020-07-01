@@ -7,5 +7,8 @@ class erlang::repo {
     'RedHat': {
       contain erlang::repo::yum
     }
+    default: {
+      fail("The only supported OS families are 'Debian' and 'RedHat', currently trying to install on OS family: ${$facts['os']['family']}")
+    }
   }
 }
