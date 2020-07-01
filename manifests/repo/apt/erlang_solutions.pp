@@ -10,7 +10,7 @@ class erlang::repo::apt::erlang_solutions (
   Optional[Variant[Numeric, String]] $pin = $erlang::package_apt_pin,
 ) inherits erlang {
 
-  apt::source { 'erlang-bintray':
+  apt::source { 'erlang-erlang_solutions':
     ensure   => $repo_ensure,
     location => $location,
     release  => $release,

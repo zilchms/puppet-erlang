@@ -3,11 +3,37 @@ require 'spec_helper_acceptance'
 describe 'erlang init:' do
   case fact('os.family')
   when 'RedHat'
-    context 'default class declaration' do
-      let(:pp) do
-        <<-EOS
+    default_repo_source = 'packagecloud'
+    repo_source_list = %w[bintray, epel, packagecloud, erlang_solutions]
+  when 'Debian'
+    default_repo_source = 'bintray'
+    repo_source_list = %w[bintray, epel, erlang_solutions]
+  end
+  
+  context 'default class declaration' do
+    let(:pp) do
+      <<-EOS
       class { 'erlang': }
       EOS
+    end
+
+    it_behaves_like 'an idempotent resource'
+
+    describe package('erlang') do
+      it { is_expected.to be_installed }
+    end
+    describe yumrepo("erlang-#{default_repo_source}") do
+      it { is_expected.to exist }
+      it { is_expected.to be_enabled }
+    end
+  end
+
+  repo_source_list.each do |repo_source|
+    context "with repo source set to #{repo_source}" do
+      let(:pp) do
+        <<-EOS
+        class { 'erlang': repo_source => '#{repo_source}' }
+        EOS
       end
 
       it_behaves_like 'an idempotent resource'
@@ -15,124 +41,9 @@ describe 'erlang init:' do
       describe package('erlang') do
         it { is_expected.to be_installed }
       end
-      describe yumrepo('erlang-packagecloud') do
+      describe yumrepo("erlang-#{repo_source}") do
         it { is_expected.to exist }
         it { is_expected.to be_enabled }
-      end
-    end
-
-    context 'with repo source set to bintray' do
-      let(:pp) do
-        <<-EOS
-        class { 'erlang': repo_source => 'bintray' }
-        EOS
-      end
-
-      it_behaves_like 'an idempotent resource'
-
-      describe package('erlang') do
-        it { is_expected.to be_installed }
-      end
-      describe yumrepo('erlang-bintray') do
-        it { is_expected.to exist }
-        it { is_expected.to be_enabled }
-      end
-    end
-
-    context 'with repo source set to epel' do
-      let(:pp) do
-        <<-EOS
-        class { 'erlang': repo_source => 'epel' }
-        EOS
-      end
-
-      it_behaves_like 'an idempotent resource'
-
-      describe package('erlang') do
-        it { is_expected.to be_installed }
-      end
-      describe yumrepo('epel') do
-        it { is_expected.to exist }
-        it { is_expected.to be_enabled }
-      end
-    end
-
-    context 'with repo source set to erlang_solutions' do
-      let(:pp) do
-        <<-EOS
-        class { 'erlang': repo_source => 'erlang_solutions' }
-        EOS
-      end
-
-      it_behaves_like 'an idempotent resource'
-
-      describe package('erlang') do
-        it { is_expected.to be_installed }
-      end
-      describe yumrepo('erlang-solutions') do
-        it { is_expected.to exist }
-        it { is_expected.to be_enabled }
-      end
-    end
-
-    context 'with repo source set to packagecloud' do
-      let(:pp) do
-        <<-EOS
-        class { 'erlang': repo_source => 'packagecloud' }
-        EOS
-      end
-
-      it_behaves_like 'an idempotent resource'
-
-      describe package('erlang') do
-        it { is_expected.to be_installed }
-      end
-      describe yumrepo('erlang-packagecloud') do
-        it { is_expected.to exist }
-        it { is_expected.to be_enabled }
-      end
-    end
-
-  when 'Debian'
-    context 'with repo source set to bintray' do
-      let(:pp) do
-        <<-EOS
-        class { 'erlang': repo_source => 'bintray' }
-        EOS
-      end
-
-      it_behaves_like 'an idempotent resource'
-
-      describe package('erlang') do
-        it { is_expected.to be_installed }
-      end
-    end
-
-    context 'with repo source set to erlang_solutions' do
-      let(:pp) do
-        <<-EOS
-        class { 'erlang': repo_source => 'erlang_solutions' }
-        EOS
-      end
-
-      it_behaves_like 'an idempotent resource'
-
-      describe package('erlang') do
-        it { is_expected.to be_installed }
-      end
-    end
-
-    context 'with repo source set to packagecloud' do
-      let(:pp) do
-        <<-EOS
-        class { 'erlang': repo_source => 'packagecloud' }
-        EOS
-      end
-
-      it_behaves_like 'an idempotent resource'
-
-      describe package('erlang') do
-        it { is_expected.to be_installed }
       end
     end
   end

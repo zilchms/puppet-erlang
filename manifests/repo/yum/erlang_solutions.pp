@@ -4,7 +4,7 @@ class erlang::repo::yum::erlang_solutions (
   String $baseurl = "https://packages.erlang-solutions.com/rpm/centos/\$releasever/\$basearch",
   String $gpgkey = 'https://packages.erlang-solutions.com/rpm/erlang_solutions.asc'
 ) inherits erlang {
-  yumrepo { 'erlang-solutions':
+  yumrepo { 'erlang-erlang_solutions':
     ensure   => $ensure,
     baseurl  => $baseurl,
     enabled  => '1',
