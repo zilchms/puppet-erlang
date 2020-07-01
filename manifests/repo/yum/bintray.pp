@@ -1,8 +1,8 @@
 # Erlang bintray yum repo
 class erlang::repo::yum::bintray (
   String $ensure = $erlang::repo_ensure,
-  String $baseurl = 'https://dl.bintray.com/rabbitmq-erlang/rpm'
-) {
+  String $baseurl = 'https://dl.bintray.com/rabbitmq-erlang/rpm',
+) inherits erlang {
   yumrepo { 'erlang-bintray':
     ensure        => $ensure,
     baseurl       => $baseurl,
