@@ -1,6 +1,6 @@
 # erlang bintray apt repo
 class erlang::repo::apt::bintray (
-  String $repo_ensure = $erlang::repo_ensure,
+  String $ensure = $erlang::repo::apt::ensure,
   String $location    = 'https://dl.bintray.com/rabbitmq-erlang/debian',
   # trusty, xenial, bionic, etc
   String $release     = downcase($facts['os']['distro']['codename']),
@@ -11,7 +11,7 @@ class erlang::repo::apt::bintray (
 ) inherits erlang {
 
   apt::source { 'erlang-bintray':
-    ensure   => $repo_ensure,
+    ensure   => $ensure,
     location => $location,
     release  => $release,
     repos    => $repos,

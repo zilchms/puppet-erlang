@@ -1,6 +1,6 @@
 # erlang erlang_solutions apt repo
 class erlang::repo::apt::erlang_solutions (
-  String $repo_ensure = $erlang::repo_ensure,
+  String $ensure = $erlang::repo::apt::ensure,
   String $location    = 'https://packages.erlang-solutions.com/debian',
   # trusty, xenial, bionic, etc
   String $release     = downcase($facts['os']['distro']['codename']),
@@ -11,7 +11,7 @@ class erlang::repo::apt::erlang_solutions (
 ) inherits erlang {
 
   apt::source { 'erlang-erlang_solutions':
-    ensure   => $repo_ensure,
+    ensure   => $ensure,
     location => $location,
     release  => $release,
     repos    => $repos,

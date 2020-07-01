@@ -25,12 +25,6 @@ describe 'erlang::repo::apt' do
           it { is_expected.to contain_class('erlang::repo::apt::erlang_solutions') }
         end
 
-        context 'with source set to packagecloud' do
-          let(:params) { { source: 'packagecloud' } }
-
-          it { is_expected.to contain_class('erlang::repo::apt::packagecloud') }
-        end
-
         context 'with source set to invalid' do
           let(:params) { { source: 'invalid' } }
 
