@@ -109,8 +109,8 @@ describe 'erlang init:' do
         it { is_expected.to be_enabled }
       end
     end
-    
-    context "removing package and repo source: epel" do
+
+    context 'removing package and repo source: epel' do
       let(:pp) do
         <<-EOS
         class { 'erlang':

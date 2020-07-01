@@ -1,9 +1,10 @@
 # erlang yum repo
 class erlang::repo::yum (
-  String  $repo_ensure = $erlang::repo_ensure,
-  Erlang::RepoSource $repo_source = $erlang::repo_source,
+  String $ensure = $erlang::repo_ensure,
+  Erlang::RepoSource $source = $erlang::repo_source,
+  Optional[String] $version = $erlang::repo_version,
 ) inherits erlang {
-  case $repo_source {
+  case $source {
     'bintray': {
       contain erlang::repo::yum::bintray
     }
@@ -20,7 +21,7 @@ class erlang::repo::yum (
       contain erlang::repo::yum::packagecloud
     }
     default: {
-      fail("Only 'bintray', 'packagecloud', 'epel' repo_source are supported for Yum repos, the following is not supported: ${repo_source}")
+      fail("Only 'bintray', 'packagecloud', 'epel' repo_source are supported for Yum repos, the following is not supported: ${source}")
     }
   }
 }
