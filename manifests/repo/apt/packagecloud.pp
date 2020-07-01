@@ -1,17 +1,15 @@
-# erlang bintray apt repo
-class erlang::repo::apt::bintray (
+# erlang packagecloud apt repo
+class erlang::repo::apt::packagecloud (
   String $repo_ensure = $erlang::repo_ensure,
-  String $location    = 'https://dl.bintray.com/rabbitmq-erlang/debian',
+  # debian, ubuntu, etc
+  String $location    = "https://packagecloud.io/rabbitmq/erlang/${downcase($facts['os']['name'])}",
   # trusty, xenial, bionic, etc
   String $release     = downcase($facts['os']['distro']['codename']),
-  String $repos       = 'erlang',
-  String $key         = '0A9AF2115F4687BD29803A206B73A36E6026DFCA',
-  String $key_source  = 'https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc',
+  String $repos       = 'main',
+  String $key         = '2EBDE413D3CE5D35BCD15B7C71C63471DF309A0B',
+  String $key_source  = 'https://packagecloud.io/rabbitmq/erlang/gpgkey',
   Optional[Variant[Numeric, String]] $pin = $erlang::package_apt_pin,
 ) inherits erlang {
-  # trusty, xenial, bionic, etc
-  $release = downcase($facts['os']['distro']['codename'])
-
   apt::source { 'erlang-bintray':
     ensure   => $repo_ensure,
     location => $location,

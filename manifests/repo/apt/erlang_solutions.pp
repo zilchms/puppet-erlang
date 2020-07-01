@@ -1,16 +1,14 @@
-# erlang bintray apt repo
-class erlang::repo::apt::bintray (
+# erlang erlang_solutions apt repo
+class erlang::repo::apt::erlang_solutions (
   String $repo_ensure = $erlang::repo_ensure,
-  String $location    = 'https://dl.bintray.com/rabbitmq-erlang/debian',
+  String $location    = 'https://packages.erlang-solutions.com/debian',
   # trusty, xenial, bionic, etc
   String $release     = downcase($facts['os']['distro']['codename']),
-  String $repos       = 'erlang',
-  String $key         = '0A9AF2115F4687BD29803A206B73A36E6026DFCA',
-  String $key_source  = 'https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc',
+  String $repos       = 'contrib',
+  String $key         = '434975BD900CCBE4F7EE1B1ED208507CA14F4FCA',
+  String $key_source  = 'https://packages.erlang-solutions.com/debian/erlang_solutions.asc',
   Optional[Variant[Numeric, String]] $pin = $erlang::package_apt_pin,
 ) inherits erlang {
-  # trusty, xenial, bionic, etc
-  $release = downcase($facts['os']['distro']['codename'])
 
   apt::source { 'erlang-bintray':
     ensure   => $repo_ensure,

@@ -107,5 +107,33 @@ describe 'erlang init:' do
         it { is_expected.to be_installed }
       end
     end
+
+    context 'with repo source set to erlang_solutions' do
+      let(:pp) do
+        <<-EOS
+        class { 'erlang': repo_source => 'erlang_solutions' }
+        EOS
+      end
+
+      it_behaves_like 'an idempotent resource'
+
+      describe package('erlang') do
+        it { is_expected.to be_installed }
+      end
+    end
+
+    context 'with repo source set to packagecloud' do
+      let(:pp) do
+        <<-EOS
+        class { 'erlang': repo_source => 'packagecloud' }
+        EOS
+      end
+
+      it_behaves_like 'an idempotent resource'
+
+      describe package('erlang') do
+        it { is_expected.to be_installed }
+      end
+    end
   end
 end
