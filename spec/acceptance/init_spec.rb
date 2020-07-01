@@ -33,7 +33,6 @@ describe 'erlang init:' do
     context 'removing package and default repo_source' do
       let(:pp) do
         <<-EOS
-        exec { '/usr/bin/yum -y erase erlang*': }
         class { 'erlang':
           package_ensure => 'absent',
           repo_ensure => 'absent',
@@ -74,16 +73,33 @@ describe 'erlang init:' do
       end
 
       context "removing package and repo source: #{repo_source}" do
-        let(:pp) do
-          <<-EOS
-          exec { '/usr/bin/yum -y erase erlang*': }
-          class { 'erlang':
-            package_ensure => 'absent',
-            repo_source => '#{repo_source}',
-            repo_ensure => 'absent',
-            repo_version => '23',
-          }
-          EOS
+        if repo_source == 'erlang_solutions'
+          # erlang solutions installs a bunch of broken erlang packages that need
+          # to be uninstalled concurrently (erlang and erlang-examples are mutually dependent)
+          let(:pp) do
+            <<-EOS
+            exec { '/usr/bin/yum -y erlang*':
+              onlyif => '/usr/bin/yum list installed | /usr/bin/grep erlang',
+            }
+            class { 'erlang':
+              package_ensure => 'absent',
+              repo_source => '#{repo_source}',
+              repo_ensure => 'absent',
+              repo_version => '23',
+            }
+            EOS
+          end
+        else
+          let(:pp) do
+            <<-EOS
+            class { 'erlang':
+              package_ensure => 'absent',
+              repo_source => '#{repo_source}',
+              repo_ensure => 'absent',
+              repo_version => '23',
+            }
+            EOS
+          end
         end
 
         it_behaves_like 'an idempotent resource'
@@ -119,7 +135,6 @@ describe 'erlang init:' do
     context 'removing package and repo source: epel' do
       let(:pp) do
         <<-EOS
-        exec { '/usr/bin/yum -y erase erlang*': }
         class { 'erlang':
           package_ensure => 'absent',
           repo_source => 'epel',

@@ -6,6 +6,7 @@ class erlang::repo::yum::packagecloud (
 ) inherits erlang {
   yumrepo { 'erlang-packagecloud':
     ensure        => $ensure,
+    name          => 'erlang-packagecloud',
     baseurl       => $baseurl,
     enabled       => '1',
     gpgcheck      => '0',

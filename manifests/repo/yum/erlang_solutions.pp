@@ -6,6 +6,7 @@ class erlang::repo::yum::erlang_solutions (
 ) inherits erlang {
   yumrepo { 'erlang-erlang_solutions':
     ensure   => $ensure,
+    name     => 'erlang-erlang_solutions',
     baseurl  => $baseurl,
     enabled  => '1',
     gpgcheck => '1',

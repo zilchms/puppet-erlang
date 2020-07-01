@@ -6,6 +6,7 @@ class erlang::repo::yum::bintray (
 ) inherits erlang {
   yumrepo { 'erlang-bintray':
     ensure        => $ensure,
+    name          => 'erlang-bintray',
     baseurl       => $baseurl,
     enabled       => '1',
     gpgcheck      => '0',
