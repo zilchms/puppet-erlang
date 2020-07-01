@@ -9,5 +9,6 @@ class erlang::repo::yum::erlang_solutions (
     baseurl  => $baseurl,
     enabled  => '1',
     gpgcheck => '1',
+    gpgkey   => $gpgkey,
   }
 }

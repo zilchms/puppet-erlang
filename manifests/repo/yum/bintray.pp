@@ -8,6 +8,6 @@ class erlang::repo::yum::bintray (
     baseurl       => $baseurl,
     enabled       => '1',
     gpgcheck      => '0',
-    repo_gpgcheck => '1',
+    repo_gpgcheck => '0',
   }
 }

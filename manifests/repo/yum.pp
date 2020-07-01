@@ -20,7 +20,7 @@ class erlang::repo::yum (
       contain erlang::repo::yum::packagecloud
     }
     default: {
-      fail("Only 'bintray', 'packagecloud', 'epel' repo_source is supported for Yum repos, the following is not supported: ${repo_source}")
+      fail("Only 'bintray', 'packagecloud', 'epel' repo_source are supported for Yum repos, the following is not supported: ${repo_source}")
     }
   }
 }

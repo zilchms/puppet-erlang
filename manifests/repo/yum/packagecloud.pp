@@ -10,5 +10,6 @@ class erlang::repo::yum::packagecloud (
     enabled       => '1',
     gpgcheck      => '0',
     repo_gpgcheck => '1',
+    gpgkey        => $gpgkey,
   }
 }
