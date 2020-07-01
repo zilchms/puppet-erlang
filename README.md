@@ -51,7 +51,7 @@ See [REFERENCE](REFERENCE.md).
 
 ### Bintray repo_source on CentOS/RHEL
 
-By default, CentOS/RHEL use the `packagecloud` repo source. 
+By default, CentOS/RHEL use the `packagecloud` repo source.
 
 If one choose to use the `bintray` repo source, then the following "gotcha" should be noted.
 
