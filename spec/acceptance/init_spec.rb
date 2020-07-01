@@ -33,7 +33,7 @@ describe 'erlang init:' do
     context 'removing package and default repo_source' do
       let(:pp) do
         <<-EOS
-        exec { '/usr/bin/yum erase erlang*': }
+        exec { '/usr/bin/yum -y erase erlang*': }
         class { 'erlang':
           package_ensure => 'absent',
           repo_ensure => 'absent',
@@ -76,7 +76,7 @@ describe 'erlang init:' do
       context "removing package and repo source: #{repo_source}" do
         let(:pp) do
           <<-EOS
-          exec { '/usr/bin/yum erase erlang*': }
+          exec { '/usr/bin/yum -y erase erlang*': }
           class { 'erlang':
             package_ensure => 'absent',
             repo_source => '#{repo_source}',
@@ -119,7 +119,7 @@ describe 'erlang init:' do
     context 'removing package and repo source: epel' do
       let(:pp) do
         <<-EOS
-        exec { '/usr/bin/yum erase erlang*': }
+        exec { '/usr/bin/yum -y erase erlang*': }
         class { 'erlang':
           package_ensure => 'absent',
           repo_source => 'epel',
