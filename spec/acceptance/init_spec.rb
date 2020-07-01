@@ -41,9 +41,13 @@ describe 'erlang init:' do
       describe package('erlang') do
         it { is_expected.to be_installed }
       end
-      describe yumrepo("erlang-#{repo_source}") do
-        it { is_expected.to exist }
-        it { is_expected.to be_enabled }
+
+      case fact('os.family')
+      when 'RedHat'
+        describe yumrepo("erlang-#{repo_source}") do
+          it { is_expected.to exist }
+          it { is_expected.to be_enabled }
+        end
       end
     end
   end
