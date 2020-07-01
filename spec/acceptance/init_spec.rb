@@ -134,8 +134,14 @@ describe 'erlang init:' do
     end
 
     context 'removing package and repo source: epel' do
+      # erlang solutions installs a bunch of broken erlang packages that need
+      # to be uninstalled concurrently (erlang and erlang-examples are mutually dependent)
       let(:pp) do
         <<-EOS
+        exec { 'yum -y erase erlang*':
+          onlyif => 'yum list installed | grep erlang',
+          path   => ['/usr/bin', '/bin'],
+        }
         class { 'erlang':
           package_ensure => 'absent',
           repo_source => 'epel',
