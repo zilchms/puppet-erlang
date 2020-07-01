@@ -1,22 +1,26 @@
 require 'spec_helper_acceptance'
 
 describe 'erlang init:' do
-  context 'default class declaration' do
-    let(:pp) do
-      <<-EOS
-      class { 'erlang': }
-      EOS
-    end
-
-    it_behaves_like 'an idempotent resource'
-
-    describe package('erlang') do
-      it { is_expected.to be_installed }
-    end
-  end
-
   case fact('os.family')
   when 'RedHat'
+    context 'default class declaration' do
+      let(:pp) do
+        <<-EOS
+      class { 'erlang': }
+      EOS
+      end
+
+      it_behaves_like 'an idempotent resource'
+
+      describe package('erlang') do
+        it { is_expected.to be_installed }
+      end
+      describe yumrepo('erlang-packagecloud') do
+        it { is_expected.to exist }
+        it { is_expected.to be_enabled }
+      end
+    end
+
     context 'with repo source set to bintray' do
       let(:pp) do
         <<-EOS
@@ -28,6 +32,10 @@ describe 'erlang init:' do
 
       describe package('erlang') do
         it { is_expected.to be_installed }
+      end
+      describe yumrepo('erlang-bintray') do
+        it { is_expected.to exist }
+        it { is_expected.to be_enabled }
       end
     end
 
@@ -43,6 +51,10 @@ describe 'erlang init:' do
       describe package('erlang') do
         it { is_expected.to be_installed }
       end
+      describe yumrepo('epel') do
+        it { is_expected.to exist }
+        it { is_expected.to be_enabled }
+      end
     end
 
     context 'with repo source set to erlang_solutions' do
@@ -57,6 +69,10 @@ describe 'erlang init:' do
       describe package('erlang') do
         it { is_expected.to be_installed }
       end
+      describe yumrepo('erlang-solutions') do
+        it { is_expected.to exist }
+        it { is_expected.to be_enabled }
+      end
     end
 
     context 'with repo source set to packagecloud' do
@@ -70,6 +86,10 @@ describe 'erlang init:' do
 
       describe package('erlang') do
         it { is_expected.to be_installed }
+      end
+      describe yumrepo('erlang-packagecloud') do
+        it { is_expected.to exist }
+        it { is_expected.to be_enabled }
       end
     end
 
