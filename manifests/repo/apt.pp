@@ -1,3 +1,4 @@
+# erlang apt repo
 class erlang::repo::apt (
   String  $ensure = $erlang::repo_ensure,
   Erlang::RepoSource $source = $erlang::repo_source,
@@ -7,9 +8,6 @@ class erlang::repo::apt (
       contain erlang::repo::apt::bintray
     }
     'erlang_solutions': {
-      contain erlang::repo::apt::erlang_solutions
-    }
-    'packagecloud': {
       contain erlang::repo::apt::erlang_solutions
     }
     default: {
