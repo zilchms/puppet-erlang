@@ -5,9 +5,9 @@ class erlang::repo::yum::erlang_solutions (
   String $gpgkey = 'https://packages.erlang-solutions.com/rpm/erlang_solutions.asc'
 ) {
   yumrepo { 'erlang-solutions':
-    ensure        => $ensure,
-    baseurl       => $baseurl,
-    enabled       => '1',
-    gpgcheck      => '1',
+    ensure   => $ensure,
+    baseurl  => $baseurl,
+    enabled  => '1',
+    gpgcheck => '1',
   }
 }
