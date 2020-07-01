@@ -54,7 +54,10 @@ describe 'erlang init:' do
       context "with repo source set to #{repo_source}" do
         let(:pp) do
           <<-EOS
-          class { 'erlang': repo_source => '#{repo_source}' }
+          class { 'erlang':
+            repo_source => '#{repo_source}',
+            repo_version => '23',
+          }
           EOS
         end
 
@@ -76,6 +79,7 @@ describe 'erlang init:' do
             package_ensure => 'absent',
             repo_source => '#{repo_source}',
             repo_ensure => 'absent',
+            repo_version => '23',
           }
           EOS
         end

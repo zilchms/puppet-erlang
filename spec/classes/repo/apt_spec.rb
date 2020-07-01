@@ -1,40 +1,34 @@
 require 'spec_helper'
 
-describe 'erlang::repo::yum' do
+describe 'erlang::repo::apt' do
   on_supported_os.each do |os, facts|
     case facts[:os]['family']
-    when 'RedHat'
+    when 'Debian'
       context "on #{os}" do
         let(:facts) { facts }
 
         it { is_expected.to compile.with_all_deps }
 
         context 'with default parameters' do
-          it { is_expected.to contain_class('erlang::repo::yum::packagecloud') }
+          it { is_expected.to contain_class('erlang::repo::apt::bintray') }
         end
 
         context 'with source set to bintray' do
-          let(:params) { { source: 'bintray', version: '23' } }
+          let(:params) { { source: 'bintray' } }
 
-          it { is_expected.to contain_class('erlang::repo::yum::bintray') }
-        end
-
-        context 'with source set to epel' do
-          let(:params) { { source: 'epel' } }
-
-          it { is_expected.to contain_class('epel').that_comes_before('Package[erlang]') }
+          it { is_expected.to contain_class('erlang::repo::apt::bintray') }
         end
 
         context 'with source set to erlang_solutions' do
           let(:params) { { source: 'erlang_solutions' } }
 
-          it { is_expected.to contain_class('erlang::repo::yum::erlang_solutions') }
+          it { is_expected.to contain_class('erlang::repo::apt::erlang_solutions') }
         end
 
         context 'with source set to packagecloud' do
           let(:params) { { source: 'packagecloud' } }
 
-          it { is_expected.to contain_class('erlang::repo::yum::packagecloud') }
+          it { is_expected.to contain_class('erlang::repo::apt::packagecloud') }
         end
 
         context 'with source set to invalid' do
