@@ -33,6 +33,7 @@ describe 'erlang init:' do
     context 'removing package and default repo_source' do
       let(:pp) do
         <<-EOS
+        exec { '/usr/bin/rpm -e erlang erlang-examples': returns => [0, 1] }
         package { 'erlang-examples': ensure => 'absent' }
         class { 'erlang':
           package_ensure => 'absent',
@@ -76,6 +77,7 @@ describe 'erlang init:' do
       context "removing package and repo source: #{repo_source}" do
         let(:pp) do
           <<-EOS
+          exec { '/usr/bin/rpm -e erlang erlang-examples': returns => [0, 1] }
           package { 'erlang-examples': ensure => 'absent' }
           class { 'erlang':
             package_ensure => 'absent',
@@ -119,6 +121,7 @@ describe 'erlang init:' do
     context 'removing package and repo source: epel' do
       let(:pp) do
         <<-EOS
+        exec { '/usr/bin/rpm -e erlang erlang-examples': returns => [0, 1] }
         package { 'erlang-examples': ensure => 'absent' }
         class { 'erlang':
           package_ensure => 'absent',
@@ -170,7 +173,6 @@ describe 'erlang init:' do
       context "removing package and repo source: #{repo_source}" do
         let(:pp) do
           <<-EOS
-          package { 'erlang-examples': ensure => 'absent' }
           class { 'erlang':
             package_ensure => 'absent',
             repo_source => '#{repo_source}',
