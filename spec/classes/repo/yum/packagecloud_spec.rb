@@ -13,6 +13,7 @@ describe 'erlang::repo::yum::packagecloud' do
           it do
             is_expected.to contain_yumrepo('erlang-packagecloud').
               with('ensure'  => 'present',
+                   'name'    => 'erlang-packagecloud',
                    'baseurl' => "https://packagecloud.io/rabbitmq/erlang/el/#{facts[:os]['release']['major']}/$basearch",
                    'enabled' => '1',
                    'gpgcheck' => '0',

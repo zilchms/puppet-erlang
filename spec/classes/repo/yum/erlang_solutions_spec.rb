@@ -13,6 +13,7 @@ describe 'erlang::repo::yum::erlang_solutions' do
           it do
             is_expected.to contain_yumrepo('erlang-erlang_solutions').
               with('ensure'  => 'present',
+                   'name'    => 'erlang-erlang_solutions',
                    'baseurl' => 'https://packages.erlang-solutions.com/rpm/centos/$releasever/$basearch',
                    'enabled' => '1',
                    'gpgcheck' => '1',

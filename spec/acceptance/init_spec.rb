@@ -148,9 +148,6 @@ describe 'erlang init:' do
       describe package('erlang') do
         it { is_expected.not_to be_installed }
       end
-      describe yumrepo('epel') do
-        it { is_expected.not_to exist }
-      end
     end
   when 'Debian'
     context 'default class declaration' do
