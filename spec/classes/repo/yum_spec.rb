@@ -22,12 +22,13 @@ describe 'erlang::repo::yum' do
         context 'with source set to epel' do
           let(:params) { { source: 'epel' } }
 
-          it { is_expected.to contain_class('epel').that_comes_before('Package[erlang]') }
+          it { is_expected.to contain_class('erlang::repo::yum::epel') }
         end
 
         context 'with source set to erlang_solutions' do
           let(:params) { { source: 'erlang_solutions' } }
 
+          it { is_expected.to contain_class('erlang::repo::yum::epel') }
           it { is_expected.to contain_class('erlang::repo::yum::erlang_solutions') }
         end
 

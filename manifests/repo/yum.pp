@@ -9,12 +9,11 @@ class erlang::repo::yum (
       contain erlang::repo::yum::bintray
     }
     'epel': {
-      # include epel instead of contain because lots of other stuff declares epel
-      include epel
-      # specifically declare dependency on epel repo
-      Class['epel'] -> Package[$erlang::package_name]
+      contain erlang::repo::yum::epel
     }
     'erlang_solutions': {
+      # erlang_solutions package requires things from EPEL
+      contain erlang::repo::yum::epel
       contain erlang::repo::yum::erlang_solutions
     }
     'packagecloud': {
