@@ -11,7 +11,7 @@ describe 'erlang::repo::yum::erlang_solutions' do
 
         context 'with default parameters' do
           it do
-            is_expected.to contain_yumrepo('erlang-solutions').
+            is_expected.to contain_yumrepo('erlang-erlang_solutions').
               with('ensure'  => 'present',
                    'baseurl' => 'https://packages.erlang-solutions.com/rpm/centos/$releasever/$basearch',
                    'enabled' => '1',

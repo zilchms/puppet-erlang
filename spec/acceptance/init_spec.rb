@@ -4,12 +4,12 @@ describe 'erlang init:' do
   case fact('os.family')
   when 'RedHat'
     default_repo_source = 'packagecloud'
-    repo_source_list = %w[bintray, epel, packagecloud, erlang_solutions]
+    repo_source_list = %w[bintray epel packagecloud erlang_solutions]
   when 'Debian'
     default_repo_source = 'bintray'
-    repo_source_list = %w[bintray, epel, erlang_solutions]
+    repo_source_list = %w[bintray epel erlang_solutions]
   end
-  
+
   context 'default class declaration' do
     let(:pp) do
       <<-EOS
