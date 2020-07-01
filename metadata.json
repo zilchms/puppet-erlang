@@ -1,0 +1,60 @@
+{
+  "name": "nmaludy-erlang",
+  "version": "0.1.0",
+  "author": "nmaludy",
+  "summary": "Manages repos and package Erlang installation",
+  "license": "Apache-2.0",
+  "source": "https://github.com/nmaludy/puppet-erlang",
+  "project_page": "https://github.com/nmaludy/puppet-erlang",
+  "issues_url": "https://github.com/nmaludy/puppet-erlang/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs/apt",
+      "version_requirement": ">= 2.0.0 < 8.0.0"
+    },
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 4.13.0 < 7.0.0"
+    },
+    {
+      "name": "puppetlabs/yumrepo_core",
+      "version_requirement": ">= 1.0.0 < 2.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6",
+        "7",
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "16.04",
+        "18.04",
+        "20.04"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7",
+        "8",
+        "9"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.10.0 < 7.0.0"
+    }
+  ],
+  "tags": [
+    "erlang",
+    "rabbitmq"
+  ]
+}
