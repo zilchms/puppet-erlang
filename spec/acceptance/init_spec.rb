@@ -78,8 +78,9 @@ describe 'erlang init:' do
           # to be uninstalled concurrently (erlang and erlang-examples are mutually dependent)
           let(:pp) do
             <<-EOS
-            exec { '/usr/bin/yum -y erase erlang*':
-              onlyif => '/usr/bin/yum list installed | /usr/bin/grep erlang',
+            exec { 'yum -y erase erlang*':
+              onlyif => 'yum list installed | grep erlang',
+              path   => ['/usr/bin', '/bin'],
             }
             class { 'erlang':
               package_ensure => 'absent',
