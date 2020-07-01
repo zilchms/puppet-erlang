@@ -14,7 +14,7 @@ describe 'erlang::repo::yum::bintray' do
           it do
             is_expected.to contain_yumrepo('erlang-bintray').
               with('ensure'  => 'present',
-                   'baseurl' => "https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/23/el/\$releasever/\$basearch",
+                   'baseurl' => "https://dl.bintray.com/rabbitmq-erlang/rpm/erlang/23/el/\$releasever",
                    'enabled' => '1',
                    'gpgcheck' => '0',
                    'repo_gpgcheck' => '0')
