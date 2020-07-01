@@ -30,6 +30,26 @@ describe 'erlang init:' do
       end
     end
 
+    context 'removing package and default repo_source' do
+      let(:pp) do
+        <<-EOS
+        class { 'erlang':
+          package_ensure => 'absent',
+          repo_ensure => 'absent',
+        }
+        EOS
+      end
+
+      it_behaves_like 'an idempotent resource'
+
+      describe package('erlang') do
+        it { is_expected.not_to be_installed }
+      end
+      describe yumrepo("erlang-#{default_repo_source}") do
+        it { is_expected.not_to exist }
+      end
+    end
+
     repo_source_list.each do |repo_source|
       context "with repo source set to #{repo_source}" do
         let(:pp) do
@@ -46,6 +66,27 @@ describe 'erlang init:' do
         describe yumrepo("erlang-#{repo_source}") do
           it { is_expected.to exist }
           it { is_expected.to be_enabled }
+        end
+      end
+
+      context "removing package and repo source: #{repo_source}" do
+        let(:pp) do
+          <<-EOS
+          class { 'erlang':
+            package_ensure => 'absent',
+            repo_source => '#{repo_source}',
+            repo_ensure => 'absent',
+          }
+          EOS
+        end
+
+        it_behaves_like 'an idempotent resource'
+
+        describe package('erlang') do
+          it { is_expected.not_to be_installed }
+        end
+        describe yumrepo("erlang-#{default_repo_source}") do
+          it { is_expected.not_to exist }
         end
       end
     end
@@ -66,6 +107,27 @@ describe 'erlang init:' do
       describe yumrepo('epel') do
         it { is_expected.to exist }
         it { is_expected.to be_enabled }
+      end
+    end
+    
+    context "removing package and repo source: epel" do
+      let(:pp) do
+        <<-EOS
+        class { 'erlang':
+          package_ensure => 'absent',
+          repo_source => 'epel',
+          repo_ensure => 'absent',
+        }
+        EOS
+      end
+
+      it_behaves_like 'an idempotent resource'
+
+      describe package('erlang') do
+        it { is_expected.not_to be_installed }
+      end
+      describe yumrepo('epel') do
+        it { is_expected.not_to exist }
       end
     end
   when 'Debian'
@@ -95,6 +157,24 @@ describe 'erlang init:' do
 
         describe package('erlang') do
           it { is_expected.to be_installed }
+        end
+      end
+
+      context "removing package and repo source: #{repo_source}" do
+        let(:pp) do
+          <<-EOS
+          class { 'erlang':
+            package_ensure => 'absent',
+            repo_source => '#{repo_source}',
+            repo_ensure => 'absent',
+          }
+          EOS
+        end
+
+        it_behaves_like 'an idempotent resource'
+
+        describe package('erlang') do
+          it { is_expected.not_to be_installed }
         end
       end
     end
