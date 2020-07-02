@@ -1,6 +1,12 @@
 # erlang
 
-[![Build Status](https://travis-ci.org/nmaludy/puppet-erlang.svg?branch=master)](https://travis-ci.org/nmaludy/puppet-erlang)
+[![License](https://img.shields.io/github/license/voxpupuli/puppet-erlang.svg)](https://github.com/voxpupuli/puppet-erlang/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/voxpupuli/puppet-erlang.svg?branch=master)](https://travis-ci.org/voxpupuli/puppet-erlang)
+[![Code Coverage](https://coveralls.io/repos/github/voxpupuli/puppet-erlang/badge.svg?branch=master)](https://coveralls.io/github/voxpupuli/puppet-erlang)
+[![Puppet Forge](https://img.shields.io/puppetforge/v/puppet/erlang.svg)](https://forge.puppetlabs.com/puppet/erlang)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/puppet/erlang.svg)](https://forge.puppetlabs.com/puppet/erlang)
+[![Puppet Forge - endorsement](https://img.shields.io/puppetforge/e/puppet/erlang.svg)](https://forge.puppetlabs.com/puppet/erlang)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/puppet/erlang.svg)](https://forge.puppetlabs.com/puppet/erlang)
 
 #### Table of Contents
 

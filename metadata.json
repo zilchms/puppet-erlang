@@ -1,12 +1,12 @@
 {
-  "name": "nmaludy-erlang",
+  "name": "puppet-erlang",
   "version": "0.1.0",
-  "author": "nmaludy",
+  "author": "Vox Pupuli",
   "summary": "Manages repos and package Erlang installation",
   "license": "Apache-2.0",
-  "source": "https://github.com/nmaludy/puppet-erlang",
-  "project_page": "https://github.com/nmaludy/puppet-erlang",
-  "issues_url": "https://github.com/nmaludy/puppet-erlang/issues",
+  "source": "https://github.com/voxpupuli/puppet-erlang",
+  "project_page": "https://github.com/voxpupuli/puppet-erlang",
+  "issues_url": "https://github.com/voxpupuli/puppet-erlang/issues",
   "dependencies": [
     {
       "name": "puppetlabs/apt",
