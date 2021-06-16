@@ -1,6 +1,6 @@
 {
   "name": "puppet-erlang",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Vox Pupuli",
   "summary": "Manages repos and package Erlang installation",
   "license": "Apache-2.0",
