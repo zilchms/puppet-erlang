@@ -55,19 +55,5 @@ See [REFERENCE](REFERENCE.md).
 
 ## Limitations
 
-### Bintray repo_source on CentOS/RHEL
-
-By default, CentOS/RHEL use the `packagecloud` repo source.
-
-If one choose to use the `bintray` repo source, then the following "gotcha" should be noted.
-
-The `bintray` erlang repository for CentOS/RHEL systems requires a `repo_version` parameter
-that is the major version of erlang that the repository should be configured for.
-
-Example:
-```puppet
-class { 'erlang':
-  repo_source  => 'bintray',
-  repo_version => '23',
-}
-```
+Bintray was supported as an upstream repository in the past. Since jfrog shut it
+down and deleted the repositories, Bintray support got removed from this module.

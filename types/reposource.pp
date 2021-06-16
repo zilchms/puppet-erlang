@@ -10,4 +10,4 @@
 #  - `'epel'`
 #  - `'erlang_solutions'`
 #  - `'packagecloud'` (default)
-type Erlang::RepoSource = Enum['bintray', 'epel', 'erlang_solutions', 'packagecloud']
+type Erlang::RepoSource = Enum['epel', 'erlang_solutions', 'packagecloud']

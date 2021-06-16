@@ -13,12 +13,6 @@ describe 'erlang::repo::yum' do
           it { is_expected.to contain_class('erlang::repo::yum::packagecloud') }
         end
 
-        context 'with source set to bintray' do
-          let(:params) { { source: 'bintray', version: '23' } }
-
-          it { is_expected.to contain_class('erlang::repo::yum::bintray') }
-        end
-
         context 'with source set to epel' do
           let(:params) { { source: 'epel' } }
 

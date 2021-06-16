@@ -31,19 +31,12 @@
 # @param [Erlang::RepoSource] repo_source
 #   Determines what repository source should be configured for installing Erlang.
 #   For Debian/Ubuntu the choices for `repo_source` are:
-#    - `'bintray'` (default)
 #    - `'erlang_solutions'`
 #
 #   For CentOS/RHEL the choices for `repo_source` are:
-#    - `'bintray'`
 #    - `'epel'`
 #    - `'erlang_solutions'`
 #    - `'packagecloud'` (default)
-#
-# @param [Optional[String]] repo_version
-#   The 'bintray' repository source for Yum requires you to specify what major version
-#   of Erlang you would like enabled. This should be a string such as: '23'
-#   Note: This is only used for the `bintray` Yum repository.
 #
 # @example Basic usage for installing Erlang quick and easy
 #   include erlang
@@ -56,12 +49,6 @@
 # @example Configuring a different repo source, EPEL on CentOS/RHEL
 #   class { 'erlang':
 #     repo_source => 'epel',
-#   }
-#
-# @example Configuring Bintray repo source on CentOS/RHEL with repo_version
-#   class { 'erlang':
-#     repo_source  => 'bintray',
-#     repo_verison => '23',
 #   }
 #
 # @example Removing the erlang package and its repository
@@ -77,7 +64,6 @@ class erlang (
   Boolean $manage_repo    = true,
   String  $repo_ensure    = 'present',
   Erlang::RepoSource $repo_source = 'packagecloud',
-  Optional[String] $repo_version = undef,
 ) {
   if $manage_repo {
     contain erlang::repo
