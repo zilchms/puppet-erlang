@@ -1,10 +1,8 @@
 ---
 # Fixtures file for puppet_spec_helper in the task: rake spec
 fixtures:
-  symlinks:
-    erlang: "#{source_dir}"
-  forge_modules:
-    apt: "puppetlabs/apt"
-    epel: "puppet/epel"
-    stdlib: "puppetlabs/stdlib"
-    yumrepo_core: "puppetlabs/yumrepo_core"
+  repositories:
+    apt: https://github.com/puppetlabs/puppetlabs-apt
+    epel: https://github.com/voxpupuli/puppet-epel
+    stdlib: https://github.com/puppetlabs/puppetlabs-stdlib
+    yumrepo_core: https://github.com/puppetlabs/puppetlabs-yumrepo_core

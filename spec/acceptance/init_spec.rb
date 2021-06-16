@@ -4,10 +4,10 @@ describe 'erlang init:' do
   case fact('os.family')
   when 'RedHat'
     default_repo_source = 'packagecloud'
-    repo_source_list = %w[bintray erlang_solutions packagecloud]
+    repo_source_list = %w[erlang_solutions packagecloud]
   when 'Debian'
-    default_repo_source = 'bintray'
-    repo_source_list = %w[bintray erlang_solutions]
+    default_repo_source = 'erlang_solutions'
+    repo_source_list = %w[erlang_solutions]
   end
 
   case fact('os.family')
@@ -56,7 +56,6 @@ describe 'erlang init:' do
           <<-EOS
           class { 'erlang':
             repo_source => '#{repo_source}',
-            repo_version => '23',
           }
           EOS
         end
@@ -86,7 +85,6 @@ describe 'erlang init:' do
               package_ensure => 'absent',
               repo_source => '#{repo_source}',
               repo_ensure => 'absent',
-              repo_version => '23',
             }
             EOS
           end
@@ -97,7 +95,6 @@ describe 'erlang init:' do
               package_ensure => 'absent',
               repo_source => '#{repo_source}',
               repo_ensure => 'absent',
-              repo_version => '23',
             }
             EOS
           end
