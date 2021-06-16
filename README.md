@@ -56,4 +56,4 @@ See [REFERENCE](REFERENCE.md).
 ## Limitations
 
 Bintray was supported as an upstream repository in the past. Since jfrog shut it
-down and deleted the repositories, Bintray support got removed from this module.
+down and deleted the repositories, Bintray support was removed from this module.
