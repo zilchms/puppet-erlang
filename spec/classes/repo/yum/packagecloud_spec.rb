@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'erlang::repo::yum::packagecloud' do
   on_supported_os.each do |os, facts|
-    context "on #{os}" do
+    context "on #{os}" do # rubocop:disable RSpec/EmptyExampleGroup
       case facts[:os]['family']
       when 'RedHat'
         let(:facts) { facts }
@@ -12,8 +14,8 @@ describe 'erlang::repo::yum::packagecloud' do
         context 'with default parameters' do
           it do
             is_expected.to contain_yumrepo('erlang-packagecloud').
-              with('ensure'  => 'present',
-                   'name'    => 'erlang-packagecloud',
+              with('ensure' => 'present',
+                   'name' => 'erlang-packagecloud',
                    'baseurl' => "https://packagecloud.io/rabbitmq/erlang/el/#{facts[:os]['release']['major']}/$basearch",
                    'enabled' => '1',
                    'gpgcheck' => '0',

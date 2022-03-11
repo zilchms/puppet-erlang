@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'erlang::repo::yum::epel' do
   on_supported_os.each do |os, facts|
-    context "on #{os}" do
+    context "on #{os}" do # rubocop:disable RSpec/EmptyExampleGroup
       case facts[:os]['family']
       when 'RedHat'
         let(:facts) { facts }

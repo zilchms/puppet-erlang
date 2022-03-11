@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe 'erlang::repo::yum' do
+describe 'erlang::repo::yum' do # rubocop:disable RSpec/EmptyExampleGroup
   on_supported_os.each do |os, facts|
     case facts[:os]['family']
     when 'RedHat'

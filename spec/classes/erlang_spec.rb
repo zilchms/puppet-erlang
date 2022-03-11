@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 describe 'erlang' do
@@ -9,6 +11,7 @@ describe 'erlang' do
 
       context 'with default params' do
         it { is_expected.to contain_class('erlang::repo') }
+
         it do
           is_expected.to contain_package('erlang').
             with_ensure('installed').
