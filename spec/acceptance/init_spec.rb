@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper_acceptance'
 
-describe 'erlang init:' do
+describe 'erlang init:' do # rubocop:disable RSpec/EmptyExampleGroup
   case fact('os.family')
   when 'RedHat'
     default_repo_source = 'packagecloud'
@@ -24,6 +26,7 @@ describe 'erlang init:' do
       describe package('erlang') do
         it { is_expected.to be_installed }
       end
+
       describe yumrepo("erlang-#{default_repo_source}") do
         it { is_expected.to exist }
         it { is_expected.to be_enabled }
@@ -45,6 +48,7 @@ describe 'erlang init:' do
       describe package('erlang') do
         it { is_expected.not_to be_installed }
       end
+
       describe yumrepo("erlang-#{default_repo_source}") do
         it { is_expected.not_to exist }
       end
@@ -65,6 +69,7 @@ describe 'erlang init:' do
         describe package('erlang') do
           it { is_expected.to be_installed }
         end
+
         describe yumrepo("erlang-#{repo_source}") do
           it { is_expected.to exist }
           it { is_expected.to be_enabled }
@@ -105,6 +110,7 @@ describe 'erlang init:' do
         describe package('erlang') do
           it { is_expected.not_to be_installed }
         end
+
         describe yumrepo("erlang-#{default_repo_source}") do
           it { is_expected.not_to exist }
         end
@@ -124,6 +130,7 @@ describe 'erlang init:' do
       describe package('erlang') do
         it { is_expected.to be_installed }
       end
+
       describe yumrepo('epel') do
         it { is_expected.to exist }
         it { is_expected.to be_enabled }

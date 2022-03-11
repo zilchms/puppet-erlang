@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
-describe 'erlang::repo::apt::erlang_solutions' do
+describe 'erlang::repo::apt::erlang_solutions' do # rubocop:disable RSpec/EmptyExampleGroup
   on_supported_os.each do |os, facts|
     case facts[:os]['family']
     when 'Debian'
@@ -13,12 +15,12 @@ describe 'erlang::repo::apt::erlang_solutions' do
         context 'with default parameters' do
           it do
             is_expected.to contain_apt__source('erlang-erlang_solutions').
-              with('ensure'   => 'present',
+              with('ensure' => 'present',
                    'location' => 'https://packages.erlang-solutions.com/debian',
-                   'release'  => release,
-                   'repos'    => 'contrib',
-                   'key'      => {
-                     'id'     => '434975BD900CCBE4F7EE1B1ED208507CA14F4FCA',
+                   'release' => release,
+                   'repos' => 'contrib',
+                   'key' => {
+                     'id' => '434975BD900CCBE4F7EE1B1ED208507CA14F4FCA',
                      'source' => 'https://packages.erlang-solutions.com/debian/erlang_solutions.asc'
                    })
           end
