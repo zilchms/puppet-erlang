@@ -2,7 +2,7 @@
 
 require 'spec_helper_acceptance'
 
-describe 'erlang init:' do # rubocop:disable RSpec/EmptyExampleGroup
+describe 'erlang init:' do
   case fact('os.family')
   when 'RedHat'
     default_repo_source = 'packagecloud'
