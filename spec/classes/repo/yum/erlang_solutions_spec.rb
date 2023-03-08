@@ -4,7 +4,7 @@ require 'spec_helper'
 
 describe 'erlang::repo::yum::erlang_solutions' do
   on_supported_os.each do |os, facts|
-    context "on #{os}" do # rubocop:disable RSpec/EmptyExampleGroup
+    context "on #{os}" do
       case facts[:os]['family']
       when 'RedHat'
         let(:facts) { facts }
