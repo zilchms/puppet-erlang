@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v1.1.0](https://github.com/voxpupuli/puppet-erlang/tree/v1.1.0) (2023-03-08)
+
+[Full Changelog](https://github.com/voxpupuli/puppet-erlang/compare/v1.0.0...v1.1.0)
+
+**Merged pull requests:**
+
+- Allow stdlib 8.0.0 [\#15](https://github.com/voxpupuli/puppet-erlang/pull/15) ([smortex](https://github.com/smortex))
+
 ## [v1.0.0](https://github.com/voxpupuli/puppet-erlang/tree/v1.0.0) (2021-06-16)
 
 [Full Changelog](https://github.com/voxpupuli/puppet-erlang/compare/fe1a063cd8b6099cb51c6ca5d915dcc88d92f378...v1.0.0)
