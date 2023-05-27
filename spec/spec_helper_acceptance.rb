@@ -5,7 +5,7 @@ require 'voxpupuli/acceptance/spec_helper_acceptance'
 configure_beaker do |host|
   case fact_on(host, 'os.family')
   when 'RedHat'
-    install_module_from_forge_on(host, 'puppet-epel', '>= 3.0.0 < 4.0.0')
+    install_puppet_module_via_pmt_on(host, 'puppet-epel')
   end
 end
 
