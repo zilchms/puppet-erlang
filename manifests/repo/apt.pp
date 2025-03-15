@@ -25,7 +25,6 @@ class erlang::repo::apt (
 
       if $pin {
         apt::pin { 'erlang':
-          packages => '*',
           priority => $pin,
           origin   => inline_template('<%= require \'uri\'; URI(@location).host %>'),
         }
