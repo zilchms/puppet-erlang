@@ -8,7 +8,6 @@
 
 * [`erlang`](#erlang): Manages the Erlang repository and package installation.
 * [`erlang::repo`](#erlang--repo): Class that manages the erlang repo
-* [`erlang::repo::apt`](#erlang--repo--apt): erlang apt repo
 * [`erlang::repo::yum`](#erlang--repo--yum): erlang yum repo
 
 ### Data types
@@ -134,87 +133,6 @@ Default value: `'packagecloud'`
 ### <a name="erlang--repo"></a>`erlang::repo`
 
 Class that manages the erlang repo
-
-### <a name="erlang--repo--apt"></a>`erlang::repo::apt`
-
-erlang apt repo
-
-#### Parameters
-
-The following parameters are available in the `erlang::repo::apt` class:
-
-* [`ensure`](#-erlang--repo--apt--ensure)
-* [`source`](#-erlang--repo--apt--source)
-* [`location`](#-erlang--repo--apt--location)
-* [`release`](#-erlang--repo--apt--release)
-* [`repos`](#-erlang--repo--apt--repos)
-* [`key`](#-erlang--repo--apt--key)
-* [`key_source`](#-erlang--repo--apt--key_source)
-* [`pin`](#-erlang--repo--apt--pin)
-
-##### <a name="-erlang--repo--apt--ensure"></a>`ensure`
-
-Data type: `String`
-
-
-
-Default value: `$erlang::repo_ensure`
-
-##### <a name="-erlang--repo--apt--source"></a>`source`
-
-Data type: `Erlang::RepoSource`
-
-
-
-Default value: `$erlang::repo_source`
-
-##### <a name="-erlang--repo--apt--location"></a>`location`
-
-Data type: `String`
-
-
-
-Default value: `'https://packages.erlang-solutions.com/debian'`
-
-##### <a name="-erlang--repo--apt--release"></a>`release`
-
-Data type: `String`
-
-
-
-Default value: `downcase($facts['os']['distro']['codename'])`
-
-##### <a name="-erlang--repo--apt--repos"></a>`repos`
-
-Data type: `String`
-
-
-
-Default value: `'contrib'`
-
-##### <a name="-erlang--repo--apt--key"></a>`key`
-
-Data type: `String`
-
-
-
-Default value: `'434975BD900CCBE4F7EE1B1ED208507CA14F4FCA'`
-
-##### <a name="-erlang--repo--apt--key_source"></a>`key_source`
-
-Data type: `String`
-
-
-
-Default value: `'https://packages.erlang-solutions.com/debian/erlang_solutions.asc'`
-
-##### <a name="-erlang--repo--apt--pin"></a>`pin`
-
-Data type: `Optional[Variant[Numeric, String]]`
-
-
-
-Default value: `$erlang::package_apt_pin`
 
 ### <a name="erlang--repo--yum"></a>`erlang::repo::yum`
 
