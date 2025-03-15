@@ -15,12 +15,12 @@ describe 'erlang::repo::yum' do # rubocop:disable RSpec/EmptyExampleGroup
           it do
             is_expected.to contain_yumrepo('erlang-packagecloud').
               with('ensure' => 'present',
-                'name' => 'erlang-packagecloud',
-                'baseurl' => "https://packagecloud.io/rabbitmq/erlang/el/#{facts[:os]['release']['major']}/$basearch",
-                'enabled' => '1',
-                'gpgcheck' => '0',
-                'repo_gpgcheck' => '1',
-                'gpgkey' => 'https://packagecloud.io/rabbitmq/erlang/gpgkey')
+                   'name' => 'erlang-packagecloud',
+                   'baseurl' => "https://packagecloud.io/rabbitmq/erlang/el/#{facts[:os]['release']['major']}/$basearch",
+                   'enabled' => '1',
+                   'gpgcheck' => '0',
+                   'repo_gpgcheck' => '1',
+                   'gpgkey' => 'https://packagecloud.io/rabbitmq/erlang/gpgkey')
           end
         end
 
@@ -40,11 +40,11 @@ describe 'erlang::repo::yum' do # rubocop:disable RSpec/EmptyExampleGroup
             it do
               is_expected.to contain_yumrepo('erlang-erlang_solutions').
                 with('ensure' => 'present',
-                  'name' => 'erlang-erlang_solutions',
-                  'baseurl' => 'https://packages.erlang-solutions.com/rpm/centos/$releasever/$basearch',
-                  'enabled' => '1',
-                  'gpgcheck' => '1',
-                  'gpgkey' => 'https://packages.erlang-solutions.com/rpm/erlang_solutions.asc')
+                     'name' => 'erlang-erlang_solutions',
+                     'baseurl' => 'https://packages.erlang-solutions.com/rpm/centos/$releasever/$basearch',
+                     'enabled' => '1',
+                     'gpgcheck' => '1',
+                     'gpgkey' => 'https://packages.erlang-solutions.com/rpm/erlang_solutions.asc')
             end
           end
         end
@@ -58,12 +58,12 @@ describe 'erlang::repo::yum' do # rubocop:disable RSpec/EmptyExampleGroup
             it do
               is_expected.to contain_yumrepo('erlang-packagecloud').
                 with('ensure' => 'present',
-                  'name' => 'erlang-packagecloud',
-                  'baseurl' => "https://packagecloud.io/rabbitmq/erlang/el/#{facts[:os]['release']['major']}/$basearch",
-                  'enabled' => '1',
-                  'gpgcheck' => '0',
-                  'repo_gpgcheck' => '1',
-                  'gpgkey' => 'https://packagecloud.io/rabbitmq/erlang/gpgkey')
+                     'name' => 'erlang-packagecloud',
+                     'baseurl' => "https://packagecloud.io/rabbitmq/erlang/el/#{facts[:os]['release']['major']}/$basearch",
+                     'enabled' => '1',
+                     'gpgcheck' => '0',
+                     'repo_gpgcheck' => '1',
+                     'gpgkey' => 'https://packagecloud.io/rabbitmq/erlang/gpgkey')
             end
           end
         end
