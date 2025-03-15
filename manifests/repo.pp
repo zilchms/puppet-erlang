@@ -2,7 +2,7 @@
 class erlang::repo {
   case $facts['os']['family'] {
     'Debian': {
-      contain erlang::repo::apt
+#      contain erlang::repo::apt
     }
     'RedHat': {
       contain erlang::repo::yum
