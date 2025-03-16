@@ -1,11 +1,11 @@
 # erlang yum repo
 class erlang::repo::yum (
-  String $ensure = $erlang::repo_ensure,
+  Enum['absent','present'] $ensure = $erlang::repo_ensure,
   Erlang::RepoSource $source = $erlang::repo_source,
-  String $erlang_solutions_baseurl = "https://packages.erlang-solutions.com/rpm/centos/\$releasever/\$basearch",
-  String $erlang_solutions_gpgkey = 'https://packages.erlang-solutions.com/rpm/erlang_solutions.asc',
-  String $packagecloud_baseurl = "https://packagecloud.io/rabbitmq/erlang/el/${$facts['os']['release']['major']}/\$basearch",
-  String $packagecloud_gpgkey = 'https://packagecloud.io/rabbitmq/erlang/gpgkey'
+  Variant[Stdlib::HTTPSUrl,Enum['absent']] $erlang_solutions_baseurl = "https://packages.erlang-solutions.com/rpm/centos/\$releasever/\$basearch",
+  Variant[Stdlib::HTTPSUrl,Enum['absent']] $erlang_solutions_gpgkey = 'https://packages.erlang-solutions.com/rpm/erlang_solutions.asc',
+  Variant[Stdlib::HTTPSUrl,Enum['absent']] $packagecloud_baseurl = "https://packagecloud.io/rabbitmq/erlang/el/${$facts['os']['release']['major']}/\$basearch",
+  Variant[Stdlib::HTTPSUrl,Enum['absent']] $packagecloud_gpgkey = 'https://packagecloud.io/rabbitmq/erlang/gpgkey'
 ) inherits erlang {
   case $source {
     'epel': {
