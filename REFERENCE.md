@@ -85,7 +85,7 @@ Default value: `'erlang'`
 
 ##### <a name="-erlang--package_ensure"></a>`package_ensure`
 
-Data type: `String`
+Data type: `Stdlib::Ensure::Package`
 
 Determines the ensure state of the package.  Set to installed by default, but could be changed to latest.
 
@@ -109,7 +109,7 @@ Default value: `true`
 
 ##### <a name="-erlang--repo_ensure"></a>`repo_ensure`
 
-Data type: `String`
+Data type: `Enum['present','absent']`
 
 Determines the ensure state of the repo.
 
@@ -151,7 +151,7 @@ The following parameters are available in the `erlang::repo::yum` class:
 
 ##### <a name="-erlang--repo--yum--ensure"></a>`ensure`
 
-Data type: `String`
+Data type: `Enum['absent','present']`
 
 
 
@@ -167,7 +167,7 @@ Default value: `$erlang::repo_source`
 
 ##### <a name="-erlang--repo--yum--erlang_solutions_baseurl"></a>`erlang_solutions_baseurl`
 
-Data type: `String`
+Data type: `Variant[Stdlib::HTTPSUrl,Enum['absent']]`
 
 
 
@@ -175,7 +175,7 @@ Default value: `"https://packages.erlang-solutions.com/rpm/centos/\$releasever/\
 
 ##### <a name="-erlang--repo--yum--erlang_solutions_gpgkey"></a>`erlang_solutions_gpgkey`
 
-Data type: `String`
+Data type: `Variant[Stdlib::HTTPSUrl,Enum['absent']]`
 
 
 
@@ -183,7 +183,7 @@ Default value: `'https://packages.erlang-solutions.com/rpm/erlang_solutions.asc'
 
 ##### <a name="-erlang--repo--yum--packagecloud_baseurl"></a>`packagecloud_baseurl`
 
-Data type: `String`
+Data type: `Variant[Stdlib::HTTPSUrl,Enum['absent']]`
 
 
 
@@ -191,7 +191,7 @@ Default value: `"https://packagecloud.io/rabbitmq/erlang/el/${$facts['os']['rele
 
 ##### <a name="-erlang--repo--yum--packagecloud_gpgkey"></a>`packagecloud_gpgkey`
 
-Data type: `String`
+Data type: `Variant[Stdlib::HTTPSUrl,Enum['absent']]`
 
 
 
